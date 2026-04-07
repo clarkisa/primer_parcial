@@ -1,0 +1,72 @@
+<robot name="robot_a">
+
+  <!-- BASE -->
+  <link name="base">
+    <visual>
+      <geometry>
+        <box size="0.4 0.4 0.2"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- LINK 1 (vertical) -->
+  <link name="link1">
+    <visual>
+      <origin xyz="0 0 0.75"/>
+      <geometry>
+        <cylinder length="1.5" radius="0.08"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="q1" type="revolute">
+    <parent link="base"/>
+    <child link="link1"/>
+    <origin xyz="0 0 0.2"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="10" velocity="1"/>
+  </joint>
+
+  <!-- LINK 2 -->
+  <link name="link2">
+    <visual>
+      <origin xyz="0.75 0 0" rpy="0 1.5708 0"/>
+      <geometry>
+        <cylinder length="1.5" radius="0.08"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="q2" type="revolute">
+    <parent link="link1"/>
+    <child link="link2"/>
+
+    <origin xyz="0 0 1.5"/>
+
+    <axis xyz="0 1 0"/>
+
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="1"/>
+  </joint>
+
+  <!-- LINK 3 -->
+  <link name="link3">
+    <visual>
+      <origin xyz="0.75 0 0" rpy="0 1.5708 0"/>
+      <geometry>
+        <cylinder length="1.5" radius="0.08"/>
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="q3" type="revolute">
+    <parent link="link2"/>
+    <child link="link3"/>
+
+    <origin xyz="1.5 0 0"/>
+
+    <axis xyz="0 1 0"/>
+
+    <limit lower="-1.57" upper="1.57" effort="10" velocity="1"/>
+  </joint>
+
+</robot>
